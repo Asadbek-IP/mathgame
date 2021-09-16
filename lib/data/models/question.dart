@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:mathgame/data/models/difficulty.dart';
+import 'package:mathgame/data/models/world.dart';
 import 'package:mathgame/util/constants.dart';
 
 class Question {
@@ -14,12 +15,12 @@ class Question {
     required this.answers,
   });
 
-  factory Question.generateQuestion(Difficulty difficulty) {
+  factory Question.generateQuestion(World world) {
     var answers = <int>[];
     var answer = 0;
     var random = Random();
-    var max = difficulty.max;
-    var operations = difficulty.getOperations();
+    var max = world.max;
+    var operations = world.allowedOperations;
     var operation = operations[random.nextInt(operations.length)];
     var first = random.nextInt(max);
     var second = 0;
