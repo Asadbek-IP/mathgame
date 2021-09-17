@@ -3,6 +3,7 @@ class World {
   final int difficulty;
   final String image;
   final bool unlocked;
+  final int stars;
   final List<String> allowedOperations;
   final int max;
 
@@ -11,6 +12,7 @@ class World {
     required this.difficulty,
     required this.image,
     required this.unlocked,
+    required this.stars,
     required this.allowedOperations,
     required this.max,
   });
@@ -30,6 +32,7 @@ class World {
       : id = map["id"],
         difficulty = map["difficulty"],
         unlocked = map["unlocked_count"] > 0,
+        stars = map["stars"],
         image = map["image"],
         allowedOperations = (map["allowed_operations"] as String).split("|"),
         max = map["max"];
