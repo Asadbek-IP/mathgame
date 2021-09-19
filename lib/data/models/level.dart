@@ -16,10 +16,10 @@ class Level {
   Map<String, dynamic> toMap(int world) {
     return {
       "id": id,
-      "number": num,
+      "number": number,
       "stars": stars,
       "unlocked": unlocked ? 1 : 0,
-      "timed_level": timedLevel,
+      "timed_level": timedLevel ? 1 : 0,
       "world": world,
     };
   }
@@ -28,6 +28,11 @@ class Level {
       : id = map["id"],
         number = map["number"],
         stars = map["stars"],
-        unlocked = map["unlocked"],
-        timedLevel = map["timed_level"];
+        unlocked = map["unlocked"] == 1,
+        timedLevel = map["timed_level"] == 1;
+
+  @override
+  String toString() {
+    return toMap(1).toString();
+  }
 }

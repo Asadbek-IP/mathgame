@@ -20,6 +20,7 @@ class World {
   Map<String, dynamic> toMap() {
     return {
       "id": id,
+      "stars": stars,
       "difficulty": difficulty,
       "image": image,
       "unlocked": unlocked,
@@ -36,4 +37,9 @@ class World {
         image = map["image"],
         allowedOperations = (map["allowed_operations"] as String).split("|"),
         max = map["max"];
+
+  @override
+  String toString() {
+    return toMap().toString();
+  }
 }
