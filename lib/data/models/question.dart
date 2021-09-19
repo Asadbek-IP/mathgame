@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:mathgame/data/models/difficulty.dart';
 import 'package:mathgame/data/models/world.dart';
 import 'package:mathgame/util/constants.dart';
 
@@ -9,7 +8,7 @@ class Question {
   final List<int> answers;
   final int _rightAnswer;
 
-  Question(
+  Question._(
     this._rightAnswer, {
     required this.question,
     required this.answers,
@@ -24,34 +23,38 @@ class Question {
     var operation = operations[random.nextInt(operations.length)];
     var first = random.nextInt(max);
     var second = 0;
-    if (operation == divideSign) {
-      do {
-        second = random.nextInt(max - 1) + 1;
-      } while (first % second != 0);
-    } else if (operation == subtractSign) {
-      do {
-        second = random.nextInt(max);
-      } while (first <= second);
-    } else {
-      second = random.nextInt(max);
-    }
     switch (operation) {
       case addSign:
+        second = random.nextInt(max);
         answer = first + second;
         break;
       case subtractSign:
+        first += random.nextInt(max - first);
+        second = random.nextInt(first);
         answer = first - second;
         break;
       case multiplySign:
+        if (first == 0) {
+          first = random.nextInt(max - 1) + 1;
+        }
+        second = (random.nextInt(max * 5) / first).round();
+        if (second > max) {
+          second = random.nextInt(max);
+        }
         answer = first * second;
         break;
       case divideSign:
-        answer = first ~/ second;
+        if (first == 0) {
+          first = random.nextInt(max - 1) + 1;
+        }
+        second = first;
+        answer = (random.nextInt(max * 2) / first).round();
+        first = second * answer;
         break;
     }
     answers.add(answer);
     max = operation == multiplySign
-        ? max * max
+        ? max * 5
         : operation == addSign
             ? max * 2
             : max;
@@ -63,7 +66,7 @@ class Question {
       answers.add(x);
     }
     answers.shuffle(random);
-    return Question(answer, question: "$first$operation$second=", answers: answers);
+    return Question._(answer, question: "$first$operation$second=", answers: answers);
   }
 
   bool isRight(int answer) {
