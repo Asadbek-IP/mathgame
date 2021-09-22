@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mathgame/pages/home_page.dart';
 import 'package:mathgame/pages/splash.dart';
 import 'package:mathgame/service_locator.dart';
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     return MaterialApp(
       home: const Splash(),
       routes: {
