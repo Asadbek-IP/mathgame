@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/pages/home_page.dart';
 import 'package:mathgame/pages/splash.dart';
+import 'package:mathgame/pages/worlds/worlds_page.dart';
 import 'package:mathgame/service_locator.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const Splash(),
+      home: const WorldsPage(),
       routes: {
         HomePage.id: (context) => HomePage(),
         Splash.id: (context) => Splash(),
