@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const WorldsPage(),
+      home: const Splash(),
       routes: {
         HomePage.id: (context) => HomePage(),
         Splash.id: (context) => Splash(),
