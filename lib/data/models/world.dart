@@ -5,6 +5,7 @@ class World {
   final bool unlocked;
   final int stars;
   final List<String> allowedOperations;
+  final int min;
   final int max;
 
   World({
@@ -14,6 +15,7 @@ class World {
     required this.unlocked,
     required this.stars,
     required this.allowedOperations,
+    required this.min,
     required this.max,
   });
 
@@ -25,6 +27,7 @@ class World {
       "image": image,
       "unlocked": unlocked,
       "allowed_operations": allowedOperations.join("|"),
+      "min": min,
       "max": max,
     };
   }
@@ -36,6 +39,7 @@ class World {
         stars = map["stars"],
         image = map["image"],
         allowedOperations = (map["allowed_operations"] as String).split("|"),
+        min = map["min"],
         max = map["max"];
 
   @override

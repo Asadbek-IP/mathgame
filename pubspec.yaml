@@ -13,6 +13,9 @@ dependencies:
   sqflite: ^2.0.0+4
   path_provider: ^2.0.3
   get_it: ^7.2.0
+  flutter_svg: ^0.22.0
+  flutter_bloc: ^7.3.0
+  equatable: ^2.0.3
 
 
   cupertino_icons: ^1.0.2
@@ -30,10 +33,11 @@ flutter:
 
   assets:
     - assets/database/math_game.db
+    - assets/images/
 
 
 
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: SmartKid
+      fonts:
+        - asset: assets/fonts/smart_kid.otf

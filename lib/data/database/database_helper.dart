@@ -57,7 +57,7 @@ class DatabaseHelper {
     Database database = await instance.database;
     var res = await database.rawQuery('''
       SELECT COUNT(level.id) as unlocked_count, IFNULL(SUM(level.stars), 0) as stars, 
-      world.id, world.allowed_operations, world.image, world.max, world.difficulty FROM world
+      world.id, world.allowed_operations, world.image, world.min, world.max, world.difficulty FROM world
       LEFT JOIN level
       ON world.id = level.world AND level.unlocked = 1 GROUP BY world.id
     ''');
