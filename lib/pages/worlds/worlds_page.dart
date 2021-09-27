@@ -78,8 +78,8 @@ class WorldsPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(32),
                           child: Image.asset(
                             "assets/images/back_button.png",
-                            width: 64,
-                            height: 64,
+                            width: 56,
+                            height: 56,
                           ),
                         ),
                       ],

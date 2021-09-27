@@ -41,3 +41,6 @@ flutter:
     - family: SmartKid
       fonts:
         - asset: assets/fonts/smart_kid.otf
+    - family: WickedMouse
+      fonts:
+        - asset: assets/fonts/wicked_mouse.otf
