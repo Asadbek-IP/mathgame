@@ -64,6 +64,12 @@ class DatabaseHelper {
     return res.map((e) => World.fromMap(e)).toList();
   }
 
+  Future<World> getWorldById(int worldId) async {
+    Database database = await instance.database;
+    var res = await database.query("world", where: "id = ?", whereArgs: [worldId]);
+    return World.fromMap(res[0]);
+  }
+
   Future<List<Level>> getLevelsByWorld(World world) async {
     Database database = await instance.database;
     var res = await database.query("level", where: "world = ?", whereArgs: [world.id]);

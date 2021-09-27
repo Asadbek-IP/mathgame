@@ -17,6 +17,8 @@ class GameRepository {
   Future<List<World>> getWorldsByDifficulty(int difficultyId) =>
       dbHelper.getWorldsByDifficulty(difficultyId);
 
+  Future<World> getWorldById(int worldId) => dbHelper.getWorldById(worldId);
+
   Future<List<Level>> getLevelsByWorld(World world) => dbHelper.getLevelsByWorld(world);
 
   List<Question> getQuestionsForWorld(World world, {int count = questionPerLevel}) {
