@@ -1,133 +1,114 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mathgame/data/models/level.dart';
 import 'package:mathgame/data/models/world.dart';
+import 'package:mathgame/pages/levels/bloc/levels_bloc.dart';
 import 'package:mathgame/pages/levels/level_card.dart';
 import 'package:mathgame/pages/levels/outlined_text.dart';
+import 'package:mathgame/service_locator.dart';
 import 'package:mathgame/util/constants.dart';
 import 'package:mathgame/util/extensions/list_extensions.dart';
 
-class LevelsPage extends StatefulWidget {
+class LevelsPage extends StatelessWidget {
   final World world;
 
   const LevelsPage({Key? key, required this.world}) : super(key: key);
 
-  static const id = "levels_page";
-
-  @override
-  State<LevelsPage> createState() => _LevelsPageState();
-}
-
-class _LevelsPageState extends State<LevelsPage> {
-  late final PageController pageController;
-  var selectedIndex = 0;
-
-  @override
-  void initState() {
-    pageController = PageController();
-    pageController.addListener(() {
-      setState(() {
-        selectedIndex = pageController.page?.toInt() ?? 0;
-      });
-    });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    pageController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    var levels = List.generate(
-      20,
-      (index) =>
-          Level(id: 1, number: index + 1, stars: index % 3, unlocked: index < 2, timedLevel: false),
-    );
-    return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Image.asset(
-              "assets/images/background_${widget.world.image}.png",
-              fit: BoxFit.cover,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16, bottom: 12),
-            child: Column(
+    return BlocProvider(
+      create: (context) =>
+          LevelsBloc(sl(), world: world, pageController: PageController())..add(InitialEvent()),
+      child: Scaffold(
+        body: BlocBuilder<LevelsBloc, LevelsState>(
+          builder: (context, state) {
+            return Stack(
               children: [
-                Image.asset(
-                  "assets/images/select_level.png",
-                  width: size.width * 0.4,
-                ),
-                const SizedBox(height: 8),
-                Expanded(
-                  child: PageView(
-                    controller: pageController,
-                    physics: const BouncingScrollPhysics(),
-                    children: levels
-                        .chunk(levelEachWorld ~/ 2)
-                        .map(
-                          (chunkedLevels) => LevelsGrid(levels: chunkedLevels, onTap: (level) {}),
-                        )
-                        .toList(),
+                Positioned.fill(
+                  child: Image.asset(
+                    "assets/images/background_${world.image}.png",
+                    fit: BoxFit.cover,
                   ),
                 ),
-                const SizedBox(height: 12),
                 Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: Row(
+                  padding: const EdgeInsets.only(top: 16, bottom: 12),
+                  child: Column(
                     children: [
-                      InkWell(
-                        onTap: () => Navigator.pop(context),
-                        borderRadius: BorderRadius.circular(32),
-                        child: Image.asset(
-                          "assets/images/back_button.png",
-                          width: 56,
-                          height: 56,
+                      Image.asset(
+                        "assets/images/select_level.png",
+                        width: size.width * 0.4,
+                      ),
+                      const SizedBox(height: 8),
+                      Expanded(
+                        child: PageView(
+                          controller: state.controller,
+                          physics: const BouncingScrollPhysics(),
+                          children: state.levels
+                              .chunk(levelEachWorld ~/ 2)
+                              .map(
+                                (chunkedLevels) =>
+                                    LevelsGrid(levels: chunkedLevels, onTap: (level) {}),
+                              )
+                              .toList(),
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Row(
+                          children: [
+                            InkWell(
+                              onTap: () => Navigator.pop(context),
+                              borderRadius: BorderRadius.circular(32),
+                              child: Image.asset(
+                                "assets/images/back_button.png",
+                                width: 56,
+                                height: 56,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ),
-              ],
-            ),
-          ),
-          Positioned(
-            left: 20,
-            top: 8,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                OutlinedText(
-                  "${widget.world.stars}/60",
-                  style: const TextStyle(fontSize: 36, color: Colors.white, fontFamily: "SmartKid"),
-                  strokeWidth: 4,
-                  strokeColor: Colors.orange,
+                Positioned(
+                  left: 20,
+                  top: 8,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      OutlinedText(
+                        "${state.stars}/${state.maxStars}",
+                        style: const TextStyle(
+                            fontSize: 36, color: Colors.white, fontFamily: "SmartKid"),
+                        strokeWidth: 4,
+                        strokeColor: Colors.orange,
+                      ),
+                      const SizedBox(width: 8),
+                      Image.asset("assets/images/filled_star.png", width: 40, height: 40),
+                    ],
+                  ),
                 ),
-                const SizedBox(width: 8),
-                Image.asset("assets/images/filled_star.png", width: 40, height: 40),
+                Positioned(
+                  bottom: 16,
+                  right: 0,
+                  left: 0,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      PageIndicator(active: state.page == 0),
+                      const SizedBox(width: 8),
+                      PageIndicator(active: state.page == 1),
+                    ],
+                  ),
+                ),
               ],
-            ),
-          ),
-          Positioned(
-            bottom: 16,
-            right: 0,
-            left: 0,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                PageIndicator(active: selectedIndex == 0),
-                const SizedBox(width: 8),
-                PageIndicator(active: selectedIndex == 1),
-              ],
-            ),
-          ),
-        ],
+            );
+          },
+        ),
       ),
     );
   }

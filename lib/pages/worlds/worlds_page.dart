@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mathgame/pages/levels/levels_page.dart';
 import 'package:mathgame/pages/worlds/bloc/worlds_bloc.dart';
 import 'package:mathgame/pages/worlds/world_card.dart';
 import 'package:mathgame/service_locator.dart';
@@ -54,7 +55,13 @@ class WorldsPage extends StatelessWidget {
                                           child: WorldCard(
                                               image: world.image,
                                               unlocked: world.unlocked,
-                                              onTap: () {},
+                                              onTap: () => Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          LevelsPage(world: world),
+                                                    ),
+                                                  ),
                                               min: world.min,
                                               max: world.max),
                                         ),

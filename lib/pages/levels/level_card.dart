@@ -17,39 +17,42 @@ class LevelCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return SizedBox(
-      width: size.height * 0.25,
-      height: size.height * 0.25 + 16,
-      child: Opacity(
-        opacity: unlocked ? 1 : 0.7,
-        child: Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12, top: 12, left: 8),
-              child: LevelBackground(
-                child: Text(
-                  number.toString(),
-                  style: const TextStyle(
-                    fontSize: 36,
-                    fontFamily: "WickedMouse",
-                    color: Colors.white,
+    return GestureDetector(
+      onTap: unlocked ? onTap : null,
+      child: SizedBox(
+        width: size.height * 0.25,
+        height: size.height * 0.25 + 16,
+        child: Opacity(
+          opacity: unlocked ? 1 : 0.7,
+          child: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12, top: 12, left: 8),
+                child: LevelBackground(
+                  child: Text(
+                    number.toString(),
+                    style: const TextStyle(
+                      fontSize: 36,
+                      fontFamily: "WickedMouse",
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
-            ),
-            if (unlocked)
-              const Positioned(
-                bottom: 6,
-                left: 8,
-                right: 0,
-                child: LevelStars(2),
-              )
-            else
-              Image.asset(
-                "assets/images/locked.png",
-                width: 40,
-              ),
-          ],
+              if (unlocked)
+                Positioned(
+                  bottom: 6,
+                  left: 8,
+                  right: 0,
+                  child: LevelStars(stars),
+                )
+              else
+                Image.asset(
+                  "assets/images/locked.png",
+                  width: 40,
+                ),
+            ],
+          ),
         ),
       ),
     );
