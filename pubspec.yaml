@@ -44,3 +44,6 @@ flutter:
     - family: WickedMouse
       fonts:
         - asset: assets/fonts/wicked_mouse.otf
+    - family: BubbleGumSans
+      fonts:
+        - asset: assets/fonts/bubblegumsans_regular.ttf

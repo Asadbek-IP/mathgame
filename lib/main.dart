@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     return MaterialApp(
-      home: HomePage(),
+      home: WorldsPage(difficultyId: 1),
       routes: {
         HomePage.id: (context) => HomePage(),
         Splash.id: (context) => Splash(),

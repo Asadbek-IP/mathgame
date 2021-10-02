@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mathgame/data/models/level.dart';
 import 'package:mathgame/data/models/world.dart';
+import 'package:mathgame/pages/game/game_page.dart';
 import 'package:mathgame/pages/levels/bloc/levels_bloc.dart';
 import 'package:mathgame/pages/levels/level_card.dart';
 import 'package:mathgame/pages/levels/outlined_text.dart';
@@ -47,8 +48,15 @@ class LevelsPage extends StatelessWidget {
                           children: state.levels
                               .chunk(levelEachWorld ~/ 2)
                               .map(
-                                (chunkedLevels) =>
-                                    LevelsGrid(levels: chunkedLevels, onTap: (level) {}),
+                                (chunkedLevels) => LevelsGrid(
+                                  levels: chunkedLevels,
+                                  onTap: (level) => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => GamePage(world: world, level: level),
+                                    ),
+                                  ),
+                                ),
                               )
                               .toList(),
                         ),
