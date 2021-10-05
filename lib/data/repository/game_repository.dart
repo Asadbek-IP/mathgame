@@ -24,4 +24,9 @@ class GameRepository {
   List<Question> getQuestionsForWorld(World world, {int count = questionPerLevel}) {
     return List.generate(count, (_) => Question.generateQuestion(world));
   }
+
+  Future<void> changeLevelStar(Level level, int newStars) =>
+      dbHelper.changeLevelStar(level, newStars);
+
+  Future<Level> getLevelById(int id) => dbHelper.getLevelById(id);
 }

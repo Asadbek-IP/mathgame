@@ -8,11 +8,16 @@ class Question {
   final List<int> answers;
   final int _rightAnswer;
 
-  Question._(
+  const Question(
     this._rightAnswer, {
     required this.question,
     required this.answers,
   });
+
+  @override
+  String toString() {
+    return {"question": question, "answers": answers}.toString();
+  }
 
   factory Question.generateQuestion(World world) {
     var answers = <int>[];
@@ -29,7 +34,7 @@ class Question {
         answer = first + second;
         break;
       case subtractSign:
-        first += random.nextInt(max - first);
+        first += random.nextInt(max ~/ 2) + (max ~/ 2);
         second = random.nextInt(first);
         answer = first - second;
         break;
@@ -66,7 +71,7 @@ class Question {
       answers.add(x);
     }
     answers.shuffle(random);
-    return Question._(answer, question: "$first$operation$second=", answers: answers);
+    return Question(answer, question: "$first$operation$second=", answers: answers);
   }
 
   bool isRight(int answer) {

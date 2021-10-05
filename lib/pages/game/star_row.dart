@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class StarRow extends StatelessWidget {
+  final int stars;
+
   const StarRow({
     Key? key,
+    required this.stars,
   }) : super(key: key);
 
   @override
@@ -20,10 +23,10 @@ class StarRow extends StatelessWidget {
               ..scale(0.8)
               ..rotateZ(-3.14 * 15 / 180),
             origin: center,
-            child: StarWidget(filled: true),
+            child: StarWidget(filled: stars > 0),
           ),
         ),
-        StarWidget(filled: false),
+        StarWidget(filled: stars > 1),
         Padding(
           padding: EdgeInsets.only(top: size.height * 0.12, left: 8),
           child: Transform(
@@ -31,7 +34,7 @@ class StarRow extends StatelessWidget {
               ..scale(0.8)
               ..rotateZ(3.14 * 15 / 180),
             origin: center,
-            child: StarWidget(filled: false),
+            child: StarWidget(filled: stars > 2),
           ),
         ),
       ],

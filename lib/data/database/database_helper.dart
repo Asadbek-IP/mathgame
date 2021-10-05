@@ -81,6 +81,12 @@ class DatabaseHelper {
     return res.map((e) => Level.fromMap(e)).toList();
   }
 
+  Future<Level> getLevelById(int id) async {
+    Database database = await instance.database;
+    var res = await database.query("level", where: "id = ?", whereArgs: [id]);
+    return Level.fromMap(res[0]);
+  }
+
   Future<void> changeLevelStar(Level level, int newStars) async {
     Database database = await instance.database;
     await database.update("level", {"stars": newStars}, where: "id = ?", whereArgs: [level.id]);

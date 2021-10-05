@@ -148,8 +148,13 @@ class LevelsGrid extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: levels
               .sublist(5, 10)
-              .map((e) =>
-                  LevelCard(number: e.number, unlocked: e.unlocked, stars: e.stars, onTap: () {}))
+              .map(
+                (level) => LevelCard(
+                    number: level.number,
+                    unlocked: level.unlocked,
+                    stars: level.stars,
+                    onTap: () => onTap(level)),
+              )
               .toList(),
         ),
       ],
