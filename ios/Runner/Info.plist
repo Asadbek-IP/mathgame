@@ -36,5 +36,12 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitaryLoads</key>
+		<true/>
+		<key>NSAllowsArbitaryLoadsForMedia</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

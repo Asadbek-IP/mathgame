@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathgame/widgets/click_sound_widget.dart';
 
 class LevelCard extends StatelessWidget {
   final int number;
@@ -17,8 +18,8 @@ class LevelCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return GestureDetector(
-      onTap: unlocked ? onTap : null,
+    return ClickSoundWidget(
+      onTap: unlocked ? onTap : () {},
       child: SizedBox(
         width: size.height * 0.25,
         height: size.height * 0.25 + 16,

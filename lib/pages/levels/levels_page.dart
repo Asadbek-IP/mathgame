@@ -9,6 +9,7 @@ import 'package:mathgame/pages/levels/outlined_text.dart';
 import 'package:mathgame/service_locator.dart';
 import 'package:mathgame/util/constants.dart';
 import 'package:mathgame/util/extensions/list_extensions.dart';
+import 'package:mathgame/widgets/click_sound_widget.dart';
 
 class LevelsPage extends StatelessWidget {
   final World world;
@@ -66,9 +67,8 @@ class LevelsPage extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 20),
                         child: Row(
                           children: [
-                            InkWell(
+                            ClickSoundWidget(
                               onTap: () => Navigator.pop(context),
-                              borderRadius: BorderRadius.circular(32),
                               child: Image.asset(
                                 "assets/images/back_button.png",
                                 width: 56,

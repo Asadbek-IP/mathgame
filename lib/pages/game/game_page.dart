@@ -8,6 +8,7 @@ import 'package:mathgame/pages/game/life_progressbar.dart';
 import 'package:mathgame/pages/game/star_row.dart';
 import 'package:mathgame/service_locator.dart';
 import 'package:mathgame/util/constants.dart';
+import 'package:mathgame/util/game_audio_player.dart';
 
 class GamePage extends StatelessWidget {
   final World world;
@@ -24,9 +25,9 @@ class GamePage extends StatelessWidget {
         body: BlocConsumer<GameBloc, GameState>(
           listener: (context, state) {
             if (state is CorrectAnswerState) {
-              print("Correct");
+              sl<GameAuidoPlayer>().correctSound();
             } else if (state is WrongAnswerState) {
-              print("Wrong");
+              sl<GameAuidoPlayer>().wrongSound();
             } else if (state is NavigateBackState) {
               Navigator.pop(context);
             }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/pages/worlds/worlds_page.dart';
+import 'package:mathgame/widgets/click_sound_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -38,12 +39,12 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    InkWell(
+                    ClickSoundWidget(
                       onTap: () {},
                       child: Image.asset("assets/images/cup.png", width: 90, height: 90),
                     ),
                     const SizedBox(width: 64),
-                    InkWell(
+                    ClickSoundWidget(
                       onTap: () => setState(() => open = true),
                       child: Image.asset("assets/images/play.png", width: 90, height: 90),
                     ),
@@ -53,15 +54,15 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    InkWell(
+                    ClickSoundWidget(
                       onTap: () {},
                       child: Image.asset("assets/images/info.png", width: 56, height: 56),
                     ),
-                    InkWell(
+                    ClickSoundWidget(
                       onTap: () {},
                       child: Image.asset("assets/images/cart.png", width: 56, height: 56),
                     ),
-                    InkWell(
+                    ClickSoundWidget(
                       onTap: () {},
                       child: Image.asset("assets/images/star.png", width: 56, height: 56),
                     ),
@@ -91,18 +92,18 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                InkWell(
+                ClickSoundWidget(
                   onTap: () => Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const WorldsPage(difficultyId: 2))),
                   child: Image.asset("assets/images/easy.png", height: 64),
                 ),
                 const SizedBox(height: 8),
-                InkWell(
+                ClickSoundWidget(
                     onTap: () => Navigator.push(context,
                         MaterialPageRoute(builder: (context) => const WorldsPage(difficultyId: 2))),
                     child: Image.asset("assets/images/medium.png", height: 64)),
                 const SizedBox(height: 8),
-                InkWell(
+                ClickSoundWidget(
                     onTap: () => Navigator.push(context,
                         MaterialPageRoute(builder: (context) => const WorldsPage(difficultyId: 3))),
                     child: Image.asset("assets/images/hard.png", height: 64)),

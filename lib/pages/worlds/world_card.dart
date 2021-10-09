@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathgame/widgets/click_sound_widget.dart';
 
 class WorldCard extends StatelessWidget {
   final String image;
@@ -18,7 +19,7 @@ class WorldCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return ClickSoundWidget(
       onTap: () => onTap(),
       child: Stack(
         alignment: Alignment.center,

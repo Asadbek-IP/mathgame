@@ -4,6 +4,7 @@ import 'package:mathgame/pages/levels/levels_page.dart';
 import 'package:mathgame/pages/worlds/bloc/worlds_bloc.dart';
 import 'package:mathgame/pages/worlds/world_card.dart';
 import 'package:mathgame/service_locator.dart';
+import 'package:mathgame/widgets/click_sound_widget.dart';
 
 class WorldsPage extends StatelessWidget {
   final int difficultyId;
@@ -80,9 +81,8 @@ class WorldsPage extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 20),
                     child: Row(
                       children: [
-                        InkWell(
+                        ClickSoundWidget(
                           onTap: () => Navigator.pop(context),
-                          borderRadius: BorderRadius.circular(32),
                           child: Image.asset(
                             "assets/images/back_button.png",
                             width: 56,
