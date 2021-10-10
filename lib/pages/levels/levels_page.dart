@@ -10,6 +10,7 @@ import 'package:mathgame/service_locator.dart';
 import 'package:mathgame/util/constants.dart';
 import 'package:mathgame/util/extensions/list_extensions.dart';
 import 'package:mathgame/widgets/click_sound_widget.dart';
+import 'package:mathgame/widgets/title_text.dart';
 
 class LevelsPage extends StatelessWidget {
   final World world;
@@ -34,14 +35,13 @@ class LevelsPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 16, bottom: 12),
+                  padding: const EdgeInsets.only(top: 8, bottom: 12),
                   child: Column(
                     children: [
-                      Image.asset(
-                        "assets/images/select_level.png",
-                        width: size.width * 0.4,
+                      const TitleText(
+                        "SELECT LEVEL",
+                        style: TextStyle(fontSize: 48),
                       ),
-                      const SizedBox(height: 8),
                       Expanded(
                         child: PageView(
                           controller: state.controller,
@@ -62,7 +62,6 @@ class LevelsPage extends StatelessWidget {
                               .toList(),
                         ),
                       ),
-                      const SizedBox(height: 12),
                       Padding(
                         padding: const EdgeInsets.only(left: 20),
                         child: Row(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/pages/worlds/worlds_page.dart';
 import 'package:mathgame/widgets/click_sound_widget.dart';
+import 'package:mathgame/widgets/title_text.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -32,41 +33,35 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset(
-                  "assets/images/home_title.png",
-                  width: size.width * 0.65,
-                ),
+                const TitleText("MATH FOR KIDS"),
+                const Spacer(),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ClickSoundWidget(
-                      onTap: () {},
-                      child: Image.asset("assets/images/cup.png", width: 90, height: 90),
-                    ),
-                    const SizedBox(width: 64),
                     ClickSoundWidget(
                       onTap: () => setState(() => open = true),
                       child: Image.asset("assets/images/play.png", width: 90, height: 90),
                     ),
                   ],
                 ),
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ClickSoundWidget(
-                      onTap: () {},
-                      child: Image.asset("assets/images/info.png", width: 56, height: 56),
-                    ),
-                    ClickSoundWidget(
-                      onTap: () {},
-                      child: Image.asset("assets/images/cart.png", width: 56, height: 56),
-                    ),
-                    ClickSoundWidget(
-                      onTap: () {},
-                      child: Image.asset("assets/images/star.png", width: 56, height: 56),
-                    ),
-                  ],
+                const Spacer(flex: 2),
+              ],
+            ),
+          ),
+          Positioned(
+            right: 32,
+            top: 16,
+            bottom: 16,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ClickSoundWidget(
+                  onTap: () {},
+                  child: Image.asset("assets/images/info.png", width: 56, height: 56),
+                ),
+                ClickSoundWidget(
+                  onTap: () {},
+                  child: Image.asset("assets/images/star.png", width: 56, height: 56),
                 ),
               ],
             ),

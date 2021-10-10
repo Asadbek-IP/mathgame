@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class OutlinedText extends StatelessWidget {
   final String text;
   final TextStyle? style;
@@ -25,7 +24,8 @@ class OutlinedText extends StatelessWidget {
             foreground: Paint()
               ..style = PaintingStyle.stroke
               ..strokeWidth = strokeWidth ?? 0
-              ..color = strokeColor ?? Colors.black,
+              ..color = strokeColor ?? Colors.black
+              ..strokeJoin = StrokeJoin.round,
           ),
         ),
         Text(text, style: style),

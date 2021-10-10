@@ -5,6 +5,7 @@ import 'package:mathgame/pages/worlds/bloc/worlds_bloc.dart';
 import 'package:mathgame/pages/worlds/world_card.dart';
 import 'package:mathgame/service_locator.dart';
 import 'package:mathgame/widgets/click_sound_widget.dart';
+import 'package:mathgame/widgets/title_text.dart';
 
 class WorldsPage extends StatelessWidget {
   final int difficultyId;
@@ -31,9 +32,9 @@ class WorldsPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: Column(
                 children: [
-                  Image.asset(
-                    "assets/images/select_world.png",
-                    width: size.width * 0.45,
+                  const TitleText(
+                    "SELECT WORLD",
+                    style: TextStyle(fontSize: 48),
                   ),
                   const SizedBox(height: 16),
                   Expanded(
