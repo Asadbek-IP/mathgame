@@ -4,7 +4,9 @@ import 'package:mathgame/data/models/level.dart';
 import 'package:mathgame/data/models/question.dart';
 import 'package:mathgame/data/models/world.dart';
 import 'package:mathgame/data/repository/game_repository.dart';
+import 'package:mathgame/service_locator.dart';
 import 'package:mathgame/util/constants.dart';
+import 'package:mathgame/util/game_audio_player.dart';
 
 part 'game_event.dart';
 part 'game_state.dart';
@@ -21,7 +23,15 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     this.repository, {
     required this.world,
     required this.level,
-  }) : super(GameInitial(levelNumber: level.number));
+  }) : super(GameInitial(levelNumber: level.number)) {
+    sl<GameAuidoPlayer>().playMusic();
+  }
+
+  @override
+  Future<void> close() {
+    sl<GameAuidoPlayer>().stopMusic();
+    return super.close();
+  }
 
   @override
   Stream<GameState> mapEventToState(
