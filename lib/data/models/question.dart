@@ -34,7 +34,7 @@ class Question {
         answer = first + second;
         break;
       case subtractSign:
-        first += random.nextInt(max ~/ 2) + (max ~/ 2);
+        first = random.nextInt(max ~/ 2) + (max ~/ 2);
         second = random.nextInt(first);
         answer = first - second;
         break;
