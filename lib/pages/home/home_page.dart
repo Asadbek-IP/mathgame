@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathgame/pages/home/difficulty_text.dart';
 import 'package:mathgame/pages/worlds/worlds_page.dart';
 import 'package:mathgame/widgets/click_sound_widget.dart';
 import 'package:mathgame/widgets/title_text.dart';
@@ -80,7 +81,7 @@ class _HomePageState extends State<HomePage> {
           AnimatedPositioned(
             top: 0,
             bottom: 0,
-            right: open ? 0 : -150,
+            right: open ? -8 : -150,
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeOut,
             child: Column(
@@ -89,19 +90,21 @@ class _HomePageState extends State<HomePage> {
               children: [
                 ClickSoundWidget(
                   onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const WorldsPage(difficultyId: 2))),
-                  child: Image.asset("assets/images/easy.png", height: 64),
+                      MaterialPageRoute(builder: (context) => const WorldsPage(difficultyId: 1))),
+                  child: const DifficultyText("EASY", backgroundColor: Colors.green),
                 ),
                 const SizedBox(height: 8),
                 ClickSoundWidget(
-                    onTap: () => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const WorldsPage(difficultyId: 2))),
-                    child: Image.asset("assets/images/medium.png", height: 64)),
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const WorldsPage(difficultyId: 2))),
+                  child: const DifficultyText("MEDIUM", backgroundColor: Colors.yellow),
+                ),
                 const SizedBox(height: 8),
                 ClickSoundWidget(
-                    onTap: () => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const WorldsPage(difficultyId: 3))),
-                    child: Image.asset("assets/images/hard.png", height: 64)),
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const WorldsPage(difficultyId: 3))),
+                  child: const DifficultyText("HARD", backgroundColor: Colors.red),
+                ),
               ],
             ),
           ),
