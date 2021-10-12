@@ -1,14 +1,20 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mathgame/pages/home/home_page.dart';
-import 'package:mathgame/pages/levels/outlined_text.dart';
-import 'package:mathgame/pages/worlds/worlds_page.dart';
 import 'package:mathgame/service_locator.dart';
-import 'package:mathgame/widgets/multi_outlined_text.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   setupServiceLocator();
-  runApp(const MyApp());
+  await EasyLocalization.ensureInitialized();
+  runApp(
+    EasyLocalization(
+      child: const MyApp(),
+      supportedLocales: [Locale("en"), Locale("uz")],
+      path: "assets/translation",
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +24,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     return MaterialApp(
-      home: HomePage(),
+      home: const HomePage(),
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
     );
   }
 }

@@ -1,0 +1,9 @@
+{
+    "game_title": "MATH FOR KIDS",
+    "easy": "EASY",
+    "medium": "MEDIUM",
+    "hard": "HARD",
+    "select_world": "SELECT WORLD",
+    "numbers": "NUMBERS {}-{}",
+    "select_level": "SELECT LEVEL"
+}

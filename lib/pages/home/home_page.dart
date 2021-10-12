@@ -1,3 +1,4 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:mathgame/pages/home/difficulty_text.dart';
 import 'package:mathgame/pages/worlds/worlds_page.dart';
@@ -34,7 +35,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const TitleText("MATH FOR KIDS"),
+                TitleText("game_title".tr()),
                 const Spacer(),
                 Row(
                   mainAxisSize: MainAxisSize.min,
@@ -91,19 +92,19 @@ class _HomePageState extends State<HomePage> {
                 ClickSoundWidget(
                   onTap: () => Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const WorldsPage(difficultyId: 1))),
-                  child: const DifficultyText("EASY", backgroundColor: Colors.green),
+                  child: DifficultyText("easy".tr(), backgroundColor: Colors.green),
                 ),
                 const SizedBox(height: 8),
                 ClickSoundWidget(
                   onTap: () => Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const WorldsPage(difficultyId: 2))),
-                  child: const DifficultyText("MEDIUM", backgroundColor: Colors.yellow),
+                  child: DifficultyText("medium".tr(), backgroundColor: Colors.yellow),
                 ),
                 const SizedBox(height: 8),
                 ClickSoundWidget(
                   onTap: () => Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const WorldsPage(difficultyId: 3))),
-                  child: const DifficultyText("HARD", backgroundColor: Colors.red),
+                  child: DifficultyText("hard".tr(), backgroundColor: Colors.red),
                 ),
               ],
             ),

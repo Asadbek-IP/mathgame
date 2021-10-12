@@ -1,3 +1,4 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:mathgame/widgets/click_sound_widget.dart';
 
@@ -51,9 +52,9 @@ class WorldCard extends StatelessWidget {
                           textAlign: TextAlign.center,
                           text: TextSpan(
                             children: [
-                              const TextSpan(text: "NUMBERS "),
+                              TextSpan(text: "numbers".tr()),
                               TextSpan(
-                                text: "$min-$max",
+                                text: " $min-$max",
                                 style: const TextStyle(color: Colors.white),
                               ),
                             ],

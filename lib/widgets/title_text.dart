@@ -9,12 +9,12 @@ class TitleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _style = style ?? const TextStyle(fontSize: 64);
+    final _style = style ?? const TextStyle(fontSize: 56);
     return OutlinedText(
       text,
       style: _style.copyWith(
         fontFamily: "WickedMouse",
-        color: const Color(0xDDF7A420),
+        color: const Color(0xDD646361),
       ),
       strokeWidth: 12,
       strokeColor: const Color(0xFFF80000),

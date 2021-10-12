@@ -1,3 +1,4 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mathgame/data/models/level.dart';
@@ -38,9 +39,9 @@ class LevelsPage extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 8, bottom: 12),
                   child: Column(
                     children: [
-                      const TitleText(
-                        "SELECT LEVEL",
-                        style: TextStyle(fontSize: 48),
+                      TitleText(
+                        "select_level".tr(),
+                        style: const TextStyle(fontSize: 36),
                       ),
                       Expanded(
                         child: PageView(

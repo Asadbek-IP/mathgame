@@ -27,8 +27,9 @@ class OutlinedText extends StatelessWidget {
               ..color = strokeColor ?? Colors.black
               ..strokeJoin = StrokeJoin.round,
           ),
+          textAlign: TextAlign.center,
         ),
-        Text(text, style: style),
+        Text(text, style: style, textAlign: TextAlign.center),
       ],
     );
   }

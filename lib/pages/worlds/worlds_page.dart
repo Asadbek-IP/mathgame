@@ -1,3 +1,4 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mathgame/pages/levels/levels_page.dart';
@@ -32,9 +33,9 @@ class WorldsPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: Column(
                 children: [
-                  const TitleText(
-                    "SELECT WORLD",
-                    style: TextStyle(fontSize: 48),
+                  TitleText(
+                    "select_world".tr(),
+                    style: const TextStyle(fontSize: 36),
                   ),
                   const SizedBox(height: 16),
                   Expanded(

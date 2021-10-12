@@ -17,6 +17,7 @@ dependencies:
   flutter_bloc: ^7.3.0
   equatable: ^2.0.3
   just_audio: ^0.9.12
+  easy_localization: ^3.0.0
 
 
   cupertino_icons: ^1.0.2
@@ -36,6 +37,7 @@ flutter:
     - assets/database/math_game.db
     - assets/images/
     - assets/audio/
+    - assets/translation/
 
 
 
