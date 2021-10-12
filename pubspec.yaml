@@ -18,6 +18,7 @@ dependencies:
   equatable: ^2.0.3
   just_audio: ^0.9.12
   easy_localization: ^3.0.0
+  url_launcher: ^6.0.12
 
 
   cupertino_icons: ^1.0.2

@@ -1,9 +1,12 @@
+import 'dart:ui';
+
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:mathgame/pages/home/difficulty_text.dart';
 import 'package:mathgame/pages/worlds/worlds_page.dart';
 import 'package:mathgame/widgets/click_sound_widget.dart';
 import 'package:mathgame/widgets/title_text.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -36,15 +39,41 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TitleText("game_title".tr()),
-                const Spacer(),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ClickSoundWidget(
-                      onTap: () => setState(() => open = true),
-                      child: Image.asset("assets/images/play.png", width: 90, height: 90),
-                    ),
-                  ],
+                const Spacer(flex: 1),
+                Expanded(
+                  flex: 7,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Spacer(flex: 1),
+                      Expanded(
+                        flex: 3,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(24),
+                                child: Container(
+                                  color: Colors.white30,
+                                  child: BackdropFilter(
+                                    filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
+                                    child: const GamesGrid(),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Spacer(flex: 1),
+                      ClickSoundWidget(
+                        onTap: () => setState(() => open = true),
+                        child: Image.asset("assets/images/play.png", width: 90, height: 90),
+                      ),
+                      const Spacer(flex: 2),
+                    ],
+                  ),
                 ),
                 const Spacer(flex: 2),
               ],
@@ -110,6 +139,52 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class GamesGrid extends StatelessWidget {
+  const GamesGrid({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.extent(
+      maxCrossAxisExtent: 96,
+      mainAxisSpacing: 12,
+      crossAxisSpacing: 12,
+      padding: const EdgeInsets.all(16),
+      physics: const BouncingScrollPhysics(),
+      children: [
+        GameItem(),
+        GameItem(),
+        GameItem(),
+        GameItem(),
+        GameItem(),
+        GameItem(),
+        GameItem(),
+        GameItem(),
+        GameItem(),
+      ],
+    );
+  }
+}
+
+class GameItem extends StatelessWidget {
+  // final String image;
+  // final String url;
+
+  const GameItem({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      // onTap: () async => await canLaunch(url) ? await launch(url) : throw "Could not launch $url",
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.greenAccent,
+          borderRadius: BorderRadius.circular(16),
+        ),
       ),
     );
   }
