@@ -1,3 +1,4 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mathgame/data/models/level.dart';
@@ -128,7 +129,7 @@ class GamePage extends StatelessWidget {
                       children: [
                         StarRow(stars: state.star),
                         Text(
-                          "LEVEL ${state.levelNumber}",
+                          "level".tr(args: [state.levelNumber.toString()]),
                           style: const TextStyle(
                               fontSize: 48, fontFamily: "SmartKid", color: Colors.white),
                         ),

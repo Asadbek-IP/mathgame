@@ -17,6 +17,7 @@ class WorldsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("difficulty" + difficultyId.toString());
     Size size = MediaQuery.of(context).size;
     return BlocProvider(
       create: (context) => sl<WorldsBloc>()..add(InitialWorldsEvent(difficultyId)),

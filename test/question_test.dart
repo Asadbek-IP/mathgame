@@ -11,7 +11,7 @@ void main() {
       stars: 0,
       allowedOperations: [multiplySign, divideSign],
       min: 0,
-      max: 10);
+      max: 40);
   for (int i = 0; i < 100; i++) {
     final question = Question.generateQuestion(world);
     print(question.toString());

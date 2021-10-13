@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:mathgame/pages/home/difficulty_text.dart';
+import 'package:mathgame/pages/home/info_page.dart';
 import 'package:mathgame/pages/worlds/worlds_page.dart';
 import 'package:mathgame/widgets/click_sound_widget.dart';
 import 'package:mathgame/widgets/title_text.dart';
@@ -87,11 +88,13 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ClickSoundWidget(
-                  onTap: () {},
+                  onTap: () =>
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => const InfoPage())),
                   child: Image.asset("assets/images/info.png", width: 56, height: 56),
                 ),
                 ClickSoundWidget(
-                  onTap: () {},
+                  onTap:
+                      () {}, // async => await canLaunch(url) ? await launch(url) : throw "Could not launch $url",,
                   child: Image.asset("assets/images/star.png", width: 56, height: 56),
                 ),
               ],
@@ -121,19 +124,19 @@ class _HomePageState extends State<HomePage> {
                 ClickSoundWidget(
                   onTap: () => Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const WorldsPage(difficultyId: 1))),
-                  child: DifficultyText("easy".tr(), backgroundColor: Colors.green),
+                  child: DifficultyText("easy".tr(), backgroundColor: const Color(0xFF1FBD00)),
                 ),
                 const SizedBox(height: 8),
                 ClickSoundWidget(
                   onTap: () => Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const WorldsPage(difficultyId: 2))),
-                  child: DifficultyText("medium".tr(), backgroundColor: Colors.yellow),
+                  child: DifficultyText("medium".tr(), backgroundColor: const Color(0xFFFFD800)),
                 ),
                 const SizedBox(height: 8),
                 ClickSoundWidget(
                   onTap: () => Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const WorldsPage(difficultyId: 3))),
-                  child: DifficultyText("hard".tr(), backgroundColor: Colors.red),
+                  child: DifficultyText("hard".tr(), backgroundColor: const Color(0xFFCC0000)),
                 ),
               ],
             ),

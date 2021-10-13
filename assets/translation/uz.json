@@ -5,5 +5,10 @@
     "hard": "QIYIN",
     "select_world": "OLAMNI TANLASH",
     "numbers": "SONLAR",
-    "select_level": "BOSQICHNI TANLANG"
+    "select_level": "BOSQICHNI TANLANG",
+    "level": "{}-bosqich",
+    "information": "MA'LUMOT",
+    "easy_info": "OSON: {} {} GACHA",
+    "medium_info": "O'RTACHA: {} {} GACHA",
+    "hard_info": "QIYIN: {} {} GACHA"
 }

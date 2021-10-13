@@ -28,6 +28,7 @@ class Question {
     var operation = operations[random.nextInt(operations.length)];
     var first = random.nextInt(max);
     var second = 0;
+    final max1 = max ~/ (sqrt(max) / 2);
     switch (operation) {
       case addSign:
         second = random.nextInt(max);
@@ -39,34 +40,34 @@ class Question {
         answer = first - second;
         break;
       case multiplySign:
-        if (first == 0) {
-          first = random.nextInt(max - 1) + 1;
-        }
-        second = (random.nextInt(max * 5) / first).round();
-        if (second > max) {
-          second = random.nextInt(max);
-        }
+        first = random.nextInt(max1 - 1) + 1;
+        second = random.nextInt(max1 - 1) + 1;
         answer = first * second;
         break;
       case divideSign:
-        if (first == 0) {
-          first = random.nextInt(max - 1) + 1;
-        }
-        second = first;
-        answer = (random.nextInt(max * 2) / first).round();
+        second = random.nextInt(max1 - 1) + 1;
+        first = random.nextInt(max);
+        answer = first ~/ second;
         first = second * answer;
         break;
     }
     answers.add(answer);
     max = operation == multiplySign
-        ? max * 5
+        ? max1 * max1
         : operation == addSign
             ? max * 2
-            : max;
+            : operation == divideSign
+                ? max1
+                : max;
+    final minAnswer = answer ~/ 2;
+    var maxAnswer = answer * 3 ~/ 2;
+    if (maxAnswer - minAnswer < 5) {
+      maxAnswer += 5;
+    }
     for (int i = 0; i < 3; i++) {
       var x = 0;
       do {
-        x = random.nextInt(max);
+        x = random.nextInt(maxAnswer - minAnswer) + minAnswer;
       } while (answers.contains(x));
       answers.add(x);
     }
