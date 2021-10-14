@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                   child: Image.asset("assets/images/info.png", width: 56, height: 56),
                 ),
                 ClickSoundWidget(
-                  onTap: () => LaunchReview.launch(androidAppId: "com.example.mathgame"),
+                  onTap: () => LaunchReview.launch(androidAppId: "com.idealcoders.mathgame"),
                   child: Image.asset("assets/images/star.png", width: 56, height: 56),
                 ),
               ],

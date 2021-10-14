@@ -21,7 +21,7 @@ dependencies:
   url_launcher: ^6.0.12
   video_player: ^2.2.5
   launch_review: ^3.0.1
-
+  change_app_package_name: ^1.0.0
 
   cupertino_icons: ^1.0.2
 
