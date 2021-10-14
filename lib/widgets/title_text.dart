@@ -14,7 +14,7 @@ class TitleText extends StatelessWidget {
       text,
       style: _style.copyWith(
         fontFamily: "WickedMouse",
-        color: const Color(0xDDE7A92B),
+        color: Colors.white,
       ),
       strokeWidth: 12,
       strokeColor: const Color(0xFFF80000),

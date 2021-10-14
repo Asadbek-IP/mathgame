@@ -12,7 +12,7 @@ class LifeProgressBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 120,
-      height: 32,
+      height: 24,
       child: CustomPaint(painter: LifeProgressBarPainter(progress)),
     );
   }

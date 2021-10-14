@@ -57,8 +57,8 @@ class GamePage extends StatelessWidget {
                         onTap: () => context.read<GameBloc>().add(PauseEvent()),
                         child: Image.asset(
                           "assets/images/pause.png",
-                          height: 32,
-                          width: 32,
+                          height: 24,
+                          width: 24,
                         ),
                       ),
                       const SizedBox(width: 8),
@@ -66,8 +66,8 @@ class GamePage extends StatelessWidget {
                       const SizedBox(width: 8),
                       Image.asset(
                         "assets/images/heart.png",
-                        height: 32,
-                        width: 32,
+                        height: 24,
+                        width: 24,
                       ),
                     ],
                   ),
@@ -102,17 +102,24 @@ class GamePage extends StatelessWidget {
                 Positioned(
                   right: 24,
                   bottom: 16,
+                  left: 24,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Image.asset("assets/images/check.png", width: 40, height: 40),
+                      Text(
+                        "level".tr(args: [state.levelNumber.toString()]),
+                        style: const TextStyle(
+                            fontSize: 36, fontFamily: "BubbleGumSans", color: Color(0xFFFFC000)),
+                      ),
+                      const Spacer(),
+                      Image.asset("assets/images/check.png", width: 32, height: 32),
                       const SizedBox(width: 4),
                       Text(
                         "${state.correctCount}/$questionPerLevel",
                         style: const TextStyle(
                           color: Color(0xFFFFC000),
                           fontFamily: "BubbleGumSans",
-                          fontSize: 32,
+                          fontSize: 24,
                         ),
                       )
                     ],
@@ -127,7 +134,7 @@ class GamePage extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        StarRow(stars: state.star),
+                        if (state.state != PlayState.pause) StarRow(stars: state.star),
                         Text(
                           "level".tr(args: [state.levelNumber.toString()]),
                           style: const TextStyle(
@@ -146,27 +153,33 @@ class GamePage extends StatelessWidget {
                             IconButton(
                               icon: Image.asset("assets/images/home.png"),
                               onPressed: () => Navigator.pop(context),
-                              iconSize: 48,
+                              iconSize: 40,
                             ),
+                            if (state.state == PlayState.pause) ...[
+                              const SizedBox(width: 56),
+                              IconButton(
+                                icon: Image.asset("assets/images/play1.png"),
+                                onPressed: () => context.read<GameBloc>().add(PlayEvent()),
+                                iconSize: 72,
+                              ),
+                            ],
                             const SizedBox(width: 56),
                             IconButton(
                               icon: Image.asset("assets/images/reload.png"),
                               onPressed: () => context.read<GameBloc>().add(RetryEvent()),
-                              iconSize: 48,
+                              iconSize: 40,
                             ),
-                            const SizedBox(width: 40),
-                            Visibility(
-                              visible: state.star > 0 || state.state == PlayState.pause,
-                              child: IconButton(
-                                icon: Image.asset("assets/images/right-arrow.png"),
-                                onPressed: () => context.read<GameBloc>().add(
-                                    state.state == PlayState.result
-                                        ? NextLevelEvent()
-                                        : PlayEvent()),
-                                iconSize: 64,
+                            if (state.star > 0) const SizedBox(width: 40),
+                            if (state.state == PlayState.result)
+                              Visibility(
+                                visible: state.star > 0,
+                                child: IconButton(
+                                  icon: Image.asset("assets/images/right-arrow.png"),
+                                  onPressed: () => context.read<GameBloc>().add(NextLevelEvent()),
+                                  iconSize: 72,
+                                ),
+                                replacement: const SizedBox(width: 64),
                               ),
-                              replacement: const SizedBox(width: 64),
-                            ),
                           ],
                         ),
                       ],

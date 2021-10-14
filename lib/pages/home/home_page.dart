@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:launch_review/launch_review.dart';
 import 'package:mathgame/pages/home/difficulty_text.dart';
 import 'package:mathgame/pages/home/info_page.dart';
 import 'package:mathgame/pages/worlds/worlds_page.dart';
@@ -93,8 +94,7 @@ class _HomePageState extends State<HomePage> {
                   child: Image.asset("assets/images/info.png", width: 56, height: 56),
                 ),
                 ClickSoundWidget(
-                  onTap:
-                      () {}, // async => await canLaunch(url) ? await launch(url) : throw "Could not launch $url",,
+                  onTap: () => LaunchReview.launch(androidAppId: "com.example.mathgame"),
                   child: Image.asset("assets/images/star.png", width: 56, height: 56),
                 ),
               ],
