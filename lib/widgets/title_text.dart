@@ -9,7 +9,7 @@ class TitleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _style = style ?? const TextStyle(fontSize: 56);
+    final _style = style ?? const TextStyle(fontSize: 48);
     return OutlinedText(
       text,
       style: _style.copyWith(

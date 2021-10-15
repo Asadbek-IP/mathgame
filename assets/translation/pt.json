@@ -1,0 +1,14 @@
+﻿{
+    "game_title": "MATEMÁTICA PARA CRIANÇAS",
+    "easy": "FÁCIL",
+    "medium": "MÉDIO",
+    "hard": "DIFÍCIL",
+    "select_world": "SELECIONE O MUNDO",
+    "numbers": "NÚMEROS",
+    "select_level": "SELECIONE O NÍVEL",
+    "level": "Nível {}",
+    "information": "EM FORMAÇÃO",
+    "easy_info": "FÁCIL: {} ATÉ {}",
+    "medium_info": "MÉDIO: {} ATÉ {}",
+    "hard_info": "DIFÍCIL: {} ATÉ {}"
+}

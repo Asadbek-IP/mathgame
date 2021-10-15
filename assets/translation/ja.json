@@ -1,0 +1,14 @@
+﻿{
+    "game_title": "子供のための数学",
+    "easy": "簡単",
+    "medium": "中くらい",
+    "hard": "難い",
+    "select_world": "世界を選択",
+    "numbers": "数字",
+    "select_level": "レベルを選択",
+    "level": "レベル {}",
+    "information": "情報",
+    "easy_info": "簡単: {} {} まで",
+    "medium_info": "中くらい: {} {} まで",
+    "hard_info": "難い: {} {} まで"
+}

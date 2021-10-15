@@ -1,0 +1,14 @@
+﻿{
+    "game_title": "儿童数学",
+    "easy": "简单",
+    "medium": "中等的",
+    "hard": "难的",
+    "select_world": "选择世界",
+    "numbers": "数字",
+    "select_level": "选择级别",
+    "level": "{} 级",
+    "information": "信息",
+    "easy_info": "简单: {} 高达 {}",
+    "medium_info": "中等的: {} 高达 {}",
+    "hard_info": "难的: {} 高达 {}"
+}
