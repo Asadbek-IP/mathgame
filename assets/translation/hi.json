@@ -1,0 +1,14 @@
+﻿{
+    "game_title": "बच्चों के लिए गणित",
+    "easy": "आसान",
+    "medium": "मध्यम",
+    "hard": "कठिन",
+    "select_world": "दुनिया का चयन करें",
+    "numbers": "संख्याएँ",
+    "select_level": "स्तर चुनें",
+    "level": "स्तर {}",
+    "information": "जानकारी",
+    "easy_info": "आसान: {} {} तक",
+    "medium_info": ""मध्यम: {} {} तक",
+    "hard_info": "कठिन: {} {} तक"
+}

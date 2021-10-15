@@ -1,0 +1,14 @@
+﻿{
+    "game_title": "MATHE FÜR KINDER",
+    "easy": "EINFACH",
+    "medium": "MITTEL",
+    "hard": "SCHWER",
+    "select_world": "WELT AUSWÄHLEN",
+    "numbers": "ZAHLEN",
+    "select_level": "STUFE AUSWÄHLEN",
+    "level": "Level {}",
+    "information": "INFORMATION",
+    "easy_info": "EINFACH: {} BIS ZU {}",
+    "medium_info": "MITTEL: {} BIS ZU {}",
+    "hard_info": "SCHWER: {} BIS ZU {}"
+}

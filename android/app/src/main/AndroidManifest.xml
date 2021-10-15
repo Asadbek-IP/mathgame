@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
    <application
-        android:label="Math for kids"
+        android:label="@string/app_name"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
