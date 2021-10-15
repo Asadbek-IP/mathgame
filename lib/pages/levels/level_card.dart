@@ -19,7 +19,7 @@ class LevelCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return ClickSoundWidget(
-      onTap: unlocked ? onTap : () {},
+      onTap: unlocked ? onTap : null,
       child: SizedBox(
         width: size.height * 0.25,
         height: size.height * 0.25 + 16,
@@ -33,7 +33,7 @@ class LevelCard extends StatelessWidget {
                   child: Text(
                     number.toString(),
                     style: const TextStyle(
-                      fontSize: 36,
+                      fontSize: 32,
                       fontFamily: "WickedMouse",
                       color: Colors.white,
                     ),

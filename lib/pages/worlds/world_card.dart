@@ -1,3 +1,4 @@
+// ignore: implementation_imports
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:mathgame/widgets/click_sound_widget.dart';
@@ -21,7 +22,7 @@ class WorldCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClickSoundWidget(
-      onTap: () => onTap(),
+      onTap: unlocked ? () => onTap() : null,
       child: Stack(
         alignment: Alignment.center,
         children: [

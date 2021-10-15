@@ -86,7 +86,6 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
 
   GameState _refresh() {
-    print(level.toMap(1).toString());
     questions = repository.getQuestionsForWorld(world);
     currentQuestionIndex = 0;
     return GameInitial(question: questions[currentQuestionIndex], levelNumber: level.number);

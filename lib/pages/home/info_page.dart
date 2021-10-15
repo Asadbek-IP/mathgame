@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:mathgame/util/constants.dart';
 import 'package:mathgame/widgets/click_sound_widget.dart';
 import 'package:mathgame/widgets/title_text.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 
-const _url = "https://www.google.com";
+// const _url = "https://www.google.com";
 
 class InfoPage extends StatelessWidget {
   const InfoPage({Key? key}) : super(key: key);
@@ -62,15 +62,15 @@ class InfoPage extends StatelessWidget {
                           height: 56,
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () async => await canLaunch(_url)
-                            ? await launch(_url)
-                            : throw "Could not launch $_url",
-                        child: const Text(
-                          _url,
-                          style: TextStyle(fontSize: 24, color: Colors.white),
-                        ),
-                      ),
+                      // GestureDetector(
+                      //   onTap: () async => await canLaunch(_url)
+                      //       ? await launch(_url)
+                      //       : throw "Could not launch $_url",
+                      //   child: const Text(
+                      //     _url,
+                      //     style: TextStyle(fontSize: 24, color: Colors.white),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ],

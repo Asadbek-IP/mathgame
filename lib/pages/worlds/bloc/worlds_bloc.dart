@@ -26,7 +26,6 @@ class WorldsBloc extends Bloc<WorldsEvent, WorldsState> {
     if (event is InitialWorldsEvent) {
       difficultyId = event.difficultyId;
       List<World> worlds = await repository.getWorldsByDifficulty(difficultyId);
-      print(worlds.toString());
       yield WorldsState(worlds: worlds);
     } else if (event is _UpdateEvent) {
       List<World> worlds = await repository.getWorldsByDifficulty(difficultyId);

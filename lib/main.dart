@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mathgame/pages/home/home_page.dart';
 import 'package:mathgame/pages/splash/splash_page.dart';
 import 'package:mathgame/service_locator.dart';
 
@@ -12,7 +11,7 @@ void main() async {
   runApp(
     EasyLocalization(
       child: const MyApp(),
-      supportedLocales: [Locale("en"), Locale("uz")],
+      supportedLocales: const [Locale("en"), Locale("uz"), Locale("ru"), Locale("es")],
       path: "assets/translation",
     ),
   );

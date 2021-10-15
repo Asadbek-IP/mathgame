@@ -7,6 +7,7 @@ class GameAuidoPlayer {
   GameAuidoPlayer() {
     player = AudioPlayer();
     player1 = AudioPlayer();
+    player1.setVolume(0.1);
     player1.setAsset("assets/audio/bensound-slowmotion.mp3");
   }
 
