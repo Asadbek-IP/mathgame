@@ -6,9 +6,13 @@ class GameAuidoPlayer {
 
   GameAuidoPlayer() {
     player = AudioPlayer();
+  }
+
+  void setupPlayer1() async {
     player1 = AudioPlayer();
-    player1.setVolume(0.1);
-    player1.setAsset("assets/audio/bensound-slowmotion.mp3");
+    await player1.setVolume(0.1);
+    await player1.setAsset("assets/audio/bensound-slowmotion.mp3");
+    await player1.setLoopMode(LoopMode.all);
   }
 
   void clickSound() async {
