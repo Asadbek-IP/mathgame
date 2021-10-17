@@ -6,6 +6,7 @@ class GameAuidoPlayer {
 
   GameAuidoPlayer() {
     player = AudioPlayer();
+    setupPlayer1();
   }
 
   void setupPlayer1() async {

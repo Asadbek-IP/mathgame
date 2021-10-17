@@ -56,7 +56,7 @@ flutter:
         - asset: assets/fonts/smart_kid.ttf
     - family: WickedMouse
       fonts:
-        - asset: assets/fonts/wicked_mouse.otf
+        - asset: assets/fonts/wicked_mouse.ttf
     - family: BubbleGumSans
       fonts:
         - asset: assets/fonts/bubblegumsans_regular.ttf
