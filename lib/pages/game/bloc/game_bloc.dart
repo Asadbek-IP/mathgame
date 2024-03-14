@@ -43,7 +43,7 @@ final isRight = questions[currentQuestionIndex].isRight(event.answer);
         }
       } else {
         if (state.life > 1) {
-          emit(state.copyWrongAnswerState(life: state.life - 1));
+          emit(state.copyWrongAnswerState(life: state.life - 1, wrongIndex: event.index));
         } else {
           emit(state.copyWith(state: PlayState.result, star: 0));
         }

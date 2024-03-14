@@ -2,6 +2,7 @@
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_shakemywidget/flutter_shakemywidget.dart';
 import 'package:mathgame/data/models/level.dart';
 import 'package:mathgame/data/models/world.dart';
 import 'package:mathgame/pages/game/bloc/game_bloc.dart';
@@ -10,13 +11,16 @@ import 'package:mathgame/pages/game/life_progressbar.dart';
 import 'package:mathgame/pages/game/star_row.dart';
 import 'package:mathgame/service_locator.dart';
 import 'package:mathgame/util/constants.dart';
+import 'package:mathgame/util/extensions/list_extensions.dart';
 import 'package:mathgame/util/game_audio_player.dart';
 
 class GamePage extends StatelessWidget {
   final World world;
   final Level level;
 
-  const GamePage({super.key, required this.world, required this.level});
+  final shakeKeys = List.generate(4, (index) => GlobalKey<ShakeWidgetState>());
+
+  GamePage({super.key, required this.world, required this.level});
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +34,7 @@ class GamePage extends StatelessWidget {
               sl<GameAuidoPlayer>().correctSound();
             } else if (state is WrongAnswerState) {
               sl<GameAuidoPlayer>().wrongSound();
+              shakeKeys[state.wrongIndex].currentState?.shake();
             } else if (state is NavigateBackState) {
               Navigator.pop(context);
             }
@@ -85,14 +90,20 @@ class GamePage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: state.question.answers
-                            .map(
-                              (answer) => SizedBox(
-                                width: size.width * 0.15,
-                                height: size.height * 0.2,
-                                child: AnswerBoard("$answer",
-                                    selected: false,
-                                    onTap: () =>
-                                        context.read<GameBloc>().add(AnswerSelectedEvent(answer))),
+                            .mapIndexed(
+                              (index, answer) => ShakeMe(
+                                key: shakeKeys[index],
+                                shakeCount: 3,
+                                shakeOffset: 10,
+                                shakeDuration: const Duration(milliseconds: 300),
+                                child: SizedBox(
+                                  width: size.width * 0.15,
+                                  height: size.height * 0.2,
+                                  child: AnswerBoard("$answer",
+                                      selected: false,
+                                      onTap: () =>
+                                          context.read<GameBloc>().add(AnswerSelectedEvent(index, answer))),
+                                ),
                               ),
                             )
                             .toList(),

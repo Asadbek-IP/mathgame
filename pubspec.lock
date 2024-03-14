@@ -122,7 +122,7 @@ packages:
     source: hosted
     version: "1.0.0"
   cupertino_icons:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: cupertino_icons
       sha256: d57953e10f9f8327ce64a508a355f0b1ec902193f66288e8cb5070e7c47eeb2d
@@ -219,6 +219,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_shakemywidget:
+    dependency: "direct main"
+    description:
+      name: flutter_shakemywidget
+      sha256: "36ecb6a6e63fc1ccd14bb77610986eef7a7b0c6e97ac846fad0c4ac1af882604"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.5+1"
   flutter_svg:
     dependency: "direct main"
     description:

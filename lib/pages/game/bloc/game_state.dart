@@ -62,6 +62,7 @@ abstract class GameState extends Equatable {
     int? levelNumber,
     int? star,
     PlayState? state,
+    required wrongIndex,
   }) =>
       WrongAnswerState(
         life: life ?? this.life,
@@ -70,6 +71,7 @@ abstract class GameState extends Equatable {
         levelNumber: levelNumber ?? this.levelNumber,
         star: star ?? this.star,
         state: state ?? this.state,
+        wrongIndex: wrongIndex,
       );
 
   NavigateBackState copyNavigateBackState({
@@ -116,6 +118,8 @@ class CorrectAnswerState extends GameState {
 }
 
 class WrongAnswerState extends GameState {
+  final int wrongIndex;
+
   const WrongAnswerState({
     required super.life,
     required super.question,
@@ -123,6 +127,7 @@ class WrongAnswerState extends GameState {
     required super.levelNumber,
     required super.star,
     required super.state,
+    required this.wrongIndex,
   });
 }
 

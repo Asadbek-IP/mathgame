@@ -10,9 +10,10 @@ abstract class GameEvent extends Equatable {
 class InitialEvent extends GameEvent {}
 
 class AnswerSelectedEvent extends GameEvent {
+  final int index;
   final int answer;
 
-  const AnswerSelectedEvent(this.answer);
+  const AnswerSelectedEvent(this.index, this.answer);
 
   @override
   List<Object> get props => [answer];

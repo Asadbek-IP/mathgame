@@ -22,8 +22,7 @@ dependencies:
   url_launcher: ^6.2.5
   video_player: ^2.8.3
   launch_review: ^3.0.1
-
-  cupertino_icons: ^1.0.6
+  flutter_shakemywidget: ^1.0.5+1
 
 dev_dependencies:
   flutter_test:
