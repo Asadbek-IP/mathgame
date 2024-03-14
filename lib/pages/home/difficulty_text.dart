@@ -5,9 +5,9 @@ class DifficultyText extends StatelessWidget {
   final Color backgroundColor;
   const DifficultyText(
     this.text, {
-    Key? key,
+    super.key,
     required this.backgroundColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

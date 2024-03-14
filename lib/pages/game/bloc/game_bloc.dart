@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mathgame/data/models/level.dart';
 import 'package:mathgame/data/models/question.dart';
 import 'package:mathgame/data/models/world.dart';
@@ -25,58 +25,57 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     required this.level,
   }) : super(GameInitial(levelNumber: level.number)) {
     sl<GameAuidoPlayer>().playMusic();
+    on<InitialEvent>((event, emit) {
+questions = repository.getQuestionsForWorld(world);
+      emit(state.copyWith(question: questions[0]));
+    });
+    on<AnswerSelectedEvent>((event, emit) async {
+final isRight = questions[currentQuestionIndex].isRight(event.answer);
+      if (isRight) {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questionPerLevel) {
+          emit(state.copyCorrectAnswerState(
+              question: questions[currentQuestionIndex], correctCount: state.correctCount + 1));
+        } else {
+          int star = starsPerLevel + state.life - lifeCount;
+          await _changeLevelStar(star);
+          emit(state.copyWith(star: star, state: PlayState.result));
+        }
+      } else {
+        if (state.life > 1) {
+          emit(state.copyWrongAnswerState(life: state.life - 1));
+        } else {
+          emit(state.copyWith(state: PlayState.result, star: 0));
+        }
+      }
+    });
+    on<PlayEvent>((event, emit) {
+      emit(state.copyWith(state: PlayState.play));
+    });
+    on<PauseEvent>((event, emit) {
+      emit(state.copyWith(state: PlayState.pause, star: 0));
+    });
+    on<NextLevelEvent>((event, emit) async {
+      if (level.id % levelEachWorld != 0) {
+        final nextLevel = await repository.getLevelById(level.id + 1);
+        if (nextLevel.unlocked) {
+          level = nextLevel;
+          emit(_refresh());
+        } else {}
+      } else {
+        emit(state.copyNavigateBackState());
+      }
+    });
+    on<RetryEvent>((event, emit) async {
+      level = await repository.getLevelById(level.id);
+      emit(_refresh());
+    });
   }
 
   @override
   Future<void> close() {
     sl<GameAuidoPlayer>().stopMusic();
     return super.close();
-  }
-
-  @override
-  Stream<GameState> mapEventToState(
-    GameEvent event,
-  ) async* {
-    if (event is InitialEvent) {
-      questions = repository.getQuestionsForWorld(world);
-      yield state.copyWith(question: questions[0]);
-    } else if (event is AnswerSelectedEvent) {
-      final isRight = questions[currentQuestionIndex].isRight(event.answer);
-      if (isRight) {
-        currentQuestionIndex++;
-        if (currentQuestionIndex < questionPerLevel) {
-          yield state.copyCorrectAnswerState(
-              question: questions[currentQuestionIndex], correctCount: state.correctCount + 1);
-        } else {
-          int star = starsPerLevel + state.life - lifeCount;
-          await _changeLevelStar(star);
-          yield state.copyWith(star: star, state: PlayState.result);
-        }
-      } else {
-        if (state.life > 1) {
-          yield state.copyWrongAnswerState(life: state.life - 1);
-        } else {
-          yield state.copyWith(state: PlayState.result, star: 0);
-        }
-      }
-    } else if (event is PlayEvent) {
-      yield state.copyWith(state: PlayState.play);
-    } else if (event is PauseEvent) {
-      yield state.copyWith(state: PlayState.pause, star: 0);
-    } else if (event is NextLevelEvent) {
-      if (level.id % levelEachWorld != 0) {
-        final nextLevel = await repository.getLevelById(level.id + 1);
-        if (nextLevel.unlocked) {
-          level = nextLevel;
-          yield _refresh();
-        } else {}
-      } else {
-        yield state.copyNavigateBackState();
-      }
-    } else if (event is RetryEvent) {
-      level = await repository.getLevelById(level.id);
-      yield _refresh();
-    }
   }
 
   Future<void> _changeLevelStar(int star) async {

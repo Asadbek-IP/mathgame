@@ -9,7 +9,7 @@ import 'package:mathgame/widgets/title_text.dart';
 // const _url = "https://www.google.com";
 
 class InfoPage extends StatelessWidget {
-  const InfoPage({Key? key}) : super(key: key);
+  const InfoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -91,11 +91,11 @@ class DifficultyInfoText extends StatelessWidget {
 
   const DifficultyInfoText(
     this.infoKey, {
-    Key? key,
+    super.key,
     required this.operations,
     required this.upto,
     required this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

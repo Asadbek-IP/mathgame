@@ -17,7 +17,7 @@ import 'package:mathgame/widgets/title_text.dart';
 class LevelsPage extends StatelessWidget {
   final World world;
 
-  const LevelsPage({Key? key, required this.world}) : super(key: key);
+  const LevelsPage({super.key, required this.world});
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +125,7 @@ class LevelsPage extends StatelessWidget {
 class LevelsGrid extends StatelessWidget {
   final List<Level> levels;
   final Function(Level) onTap;
-  const LevelsGrid({Key? key, required this.levels, required this.onTap}) : super(key: key);
+  const LevelsGrid({super.key, required this.levels, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +165,7 @@ class LevelsGrid extends StatelessWidget {
 class PageIndicator extends StatelessWidget {
   final bool active;
 
-  const PageIndicator({Key? key, required this.active}) : super(key: key);
+  const PageIndicator({super.key, required this.active});
 
   @override
   Widget build(BuildContext context) {

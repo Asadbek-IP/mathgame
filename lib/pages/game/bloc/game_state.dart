@@ -95,85 +95,55 @@ abstract class GameState extends Equatable {
 
 class GameInitial extends GameState {
   const GameInitial({
-    life = lifeCount,
-    question = blankQuestion,
-    correctCount = 0,
-    required int levelNumber,
-    star = 0,
-    state = PlayState.play,
-  }) : super(
-            life: life,
-            question: question,
-            correctCount: correctCount,
-            levelNumber: levelNumber,
-            star: star,
-            state: state);
+    super.life = lifeCount,
+    super.question = blankQuestion,
+    super.correctCount = 0,
+    required super.levelNumber,
+    super.star = 0,
+    super.state = PlayState.play,
+  });
 }
 
 class CorrectAnswerState extends GameState {
   const CorrectAnswerState({
-    required int life,
-    required Question question,
-    required int correctCount,
-    required int levelNumber,
-    required int star,
-    required PlayState state,
-  }) : super(
-            life: life,
-            question: question,
-            correctCount: correctCount,
-            levelNumber: levelNumber,
-            star: star,
-            state: state);
+    required super.life,
+    required super.question,
+    required super.correctCount,
+    required super.levelNumber,
+    required super.star,
+    required super.state,
+  });
 }
 
 class WrongAnswerState extends GameState {
   const WrongAnswerState({
-    required int life,
-    required Question question,
-    required int correctCount,
-    required int levelNumber,
-    required int star,
-    required PlayState state,
-  }) : super(
-            life: life,
-            question: question,
-            correctCount: correctCount,
-            levelNumber: levelNumber,
-            star: star,
-            state: state);
+    required super.life,
+    required super.question,
+    required super.correctCount,
+    required super.levelNumber,
+    required super.star,
+    required super.state,
+  });
 }
 
 class GameOverState extends GameState {
   const GameOverState({
-    required int life,
-    required Question question,
-    required int correctCount,
-    required int levelNumber,
-    required int star,
-    required PlayState state,
-  }) : super(
-            life: life,
-            question: question,
-            correctCount: correctCount,
-            levelNumber: levelNumber,
-            star: star,
-            state: state);
+    required super.life,
+    required super.question,
+    required super.correctCount,
+    required super.levelNumber,
+    required super.star,
+    required super.state,
+  });
 }
 
 class NavigateBackState extends GameState {
   const NavigateBackState({
-    required int life,
-    required Question question,
-    required int correctCount,
-    required int levelNumber,
-    required int star,
-    required PlayState state,
-  }) : super(
-            life: life,
-            question: question,
-            correctCount: correctCount,
-            levelNumber: levelNumber,
-            star: star,
-            state: state);
+    required super.life,
+    required super.question,
+    required super.correctCount,
+    required super.levelNumber,
+    required super.star,
+    required super.state,
+  });
 }

@@ -7,22 +7,22 @@ class AnswerBoard extends StatelessWidget {
 
   const AnswerBoard(
     this.text, {
-    Key? key,
+    super.key,
     required this.selected,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Board(
+        borderRadius: 8,
+        selected: selected,
         child: Text(
           text,
           style: const TextStyle(color: Colors.white, fontSize: 48, fontFamily: "BubbleGumSans"),
         ),
-        borderRadius: 8,
-        selected: selected,
       ),
     );
   }
@@ -33,8 +33,8 @@ class QuestionBoard extends StatelessWidget {
 
   const QuestionBoard(
     this.text, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -53,11 +53,11 @@ class Board extends StatelessWidget {
   final bool selected;
 
   const Board({
-    Key? key,
+    super.key,
     required this.child,
     this.borderRadius = 16,
     this.selected = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

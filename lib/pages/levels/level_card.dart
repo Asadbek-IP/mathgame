@@ -8,12 +8,12 @@ class LevelCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const LevelCard({
-    Key? key,
+    super.key,
     required this.number,
     required this.unlocked,
     required this.stars,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class LevelCard extends StatelessWidget {
 
 class LevelStars extends StatelessWidget {
   final int stars;
-  const LevelStars(this.stars, {Key? key}) : super(key: key);
+  const LevelStars(this.stars, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +88,7 @@ class LevelStars extends StatelessWidget {
 class LevelBackground extends StatelessWidget {
   final Widget child;
 
-  const LevelBackground({Key? key, required this.child}) : super(key: key);
+  const LevelBackground({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {

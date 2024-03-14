@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mathgame/data/models/level.dart';
 import 'package:mathgame/data/models/world.dart';
 import 'package:mathgame/data/repository/game_repository.dart';
@@ -16,7 +16,8 @@ class LevelsBloc extends Bloc<LevelsEvent, LevelsState> {
   final World world;
   final PageController pageController;
 
-  LevelsBloc(this.repository, {required this.world, required this.pageController})
+  LevelsBloc(this.repository,
+      {required this.world, required this.pageController})
       : super(LevelsInitial(controller: pageController)) {
     repository.changeStream().listen((event) {
       add(_UpdateEvent());
@@ -27,29 +28,26 @@ class LevelsBloc extends Bloc<LevelsEvent, LevelsState> {
         add(_PageChangedEvent(page.toInt()));
       }
     });
-  }
-
-  @override
-  Stream<LevelsState> mapEventToState(
-    LevelsEvent event,
-  ) async* {
-    if (event is InitialEvent) {
+    on<InitialEvent>((event, emit) async {
       final levels = await _getLevels();
-      yield LevelsInitial(
+      emit(LevelsInitial(
         stars: world.stars,
         maxStars: levelEachWorld * starsPerLevel,
         levels: levels,
         controller: state.controller,
-      );
-    } else if (event is _UpdateEvent) {
+      ));
+    });
+    on<_UpdateEvent>((event, emit) async {
       final world = await _getWorld();
       final levels = await _getLevels();
-      yield state.copyWith(stars: world.stars, levels: levels);
-    } else if (event is _PageChangedEvent) {
-      yield state.copyWith(page: event.newPage);
-    }
-  }
+      emit(state.copyWith(stars: world.stars, levels: levels));
+    });
 
+    on<_PageChangedEvent>((event, emit) {
+      emit(state.copyWith(page: event.newPage));
+    });
+  }
+  
   Future<World> _getWorld() async {
     return await repository.getWorldById(world.id);
   }

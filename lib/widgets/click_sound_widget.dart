@@ -6,7 +6,7 @@ class ClickSoundWidget extends StatelessWidget {
   final VoidCallback? onTap;
   final Widget child;
 
-  const ClickSoundWidget({Key? key, required this.onTap, required this.child}) : super(key: key);
+  const ClickSoundWidget({super.key, required this.onTap, required this.child});
 
   @override
   Widget build(BuildContext context) {

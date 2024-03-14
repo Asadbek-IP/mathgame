@@ -16,7 +16,7 @@ class GamePage extends StatelessWidget {
   final World world;
   final Level level;
 
-  const GamePage({Key? key, required this.world, required this.level}) : super(key: key);
+  const GamePage({super.key, required this.world, required this.level});
 
   @override
   Widget build(BuildContext context) {
@@ -173,12 +173,12 @@ class GamePage extends StatelessWidget {
                             if (state.state == PlayState.result)
                               Visibility(
                                 visible: state.star > 0,
+                                replacement: const SizedBox(width: 64),
                                 child: IconButton(
                                   icon: Image.asset("assets/images/right-arrow.png"),
                                   onPressed: () => context.read<GameBloc>().add(NextLevelEvent()),
                                   iconSize: 72,
                                 ),
-                                replacement: const SizedBox(width: 64),
                               ),
                           ],
                         ),

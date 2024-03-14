@@ -12,7 +12,7 @@ import 'package:mathgame/widgets/title_text.dart';
 class WorldsPage extends StatelessWidget {
   final int difficultyId;
 
-  const WorldsPage({Key? key, required this.difficultyId}) : super(key: key);
+  const WorldsPage({super.key, required this.difficultyId});
 
   static const id = "worlds_page";
 

@@ -1,7 +1,5 @@
-import 'dart:async';
-
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mathgame/data/models/world.dart';
 import 'package:mathgame/data/repository/game_repository.dart';
 
@@ -11,26 +9,23 @@ part 'worlds_state.dart';
 class WorldsBloc extends Bloc<WorldsEvent, WorldsState> {
   final GameRepository repository;
 
+  late int difficultyId;
+
   WorldsBloc(this.repository) : super(const WorldsState(worlds: [])) {
     repository.changeStream().listen((_) {
       add(_UpdateEvent(_));
     });
-  }
 
-  late int difficultyId;
-
-  @override
-  Stream<WorldsState> mapEventToState(
-    WorldsEvent event,
-  ) async* {
-    if (event is InitialWorldsEvent) {
+    on<InitialWorldsEvent>((event, emit) async {
       difficultyId = event.difficultyId;
-      List<World> worlds = await repository.getWorldsByDifficulty(difficultyId);
-      yield WorldsState(worlds: worlds);
-    } else if (event is _UpdateEvent) {
-      List<World> worlds = await repository.getWorldsByDifficulty(difficultyId);
-      yield WorldsState(worlds: worlds);
-    }
+      final worlds = await repository.getWorldsByDifficulty(difficultyId);
+      emit(WorldsState(worlds: worlds));
+    });
+
+    on<_UpdateEvent>((event, emit) async {
+      final worlds = await repository.getWorldsByDifficulty(difficultyId);
+      emit(WorldsState(worlds: worlds));
+    });
   }
 }
 

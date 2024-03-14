@@ -1,7 +1,4 @@
-import 'dart:ui';
-
-// ignore: implementation_imports
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:launch_review/launch_review.dart';
 import 'package:mathgame/pages/home/difficulty_text.dart';
@@ -11,7 +8,7 @@ import 'package:mathgame/widgets/click_sound_widget.dart';
 import 'package:mathgame/widgets/title_text.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();

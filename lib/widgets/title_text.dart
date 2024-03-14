@@ -5,14 +5,14 @@ class TitleText extends StatelessWidget {
   final String text;
   final TextStyle? style;
 
-  const TitleText(this.text, {Key? key, this.style}) : super(key: key);
+  const TitleText(this.text, {super.key, this.style});
 
   @override
   Widget build(BuildContext context) {
-    final _style = style ?? const TextStyle(fontSize: 48);
+    final style2 = style ?? const TextStyle(fontSize: 48);
     return OutlinedText(
       text,
-      style: _style.copyWith(
+      style: style2.copyWith(
         fontFamily: "WickedMouse",
         color: Colors.white,
       ),

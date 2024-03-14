@@ -38,13 +38,12 @@ class LevelsInitial extends LevelsState {
     int? stars,
     int? maxStars,
     List<Level>? levels,
-    required PageController controller,
+    required super.controller,
     int? page,
   }) : super(
           stars: stars ?? 0,
           maxStars: maxStars ?? 0,
           levels: levels ?? <Level>[],
-          controller: controller,
           page: page ?? 0,
         );
 }

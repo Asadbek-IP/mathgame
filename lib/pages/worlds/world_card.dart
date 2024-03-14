@@ -11,13 +11,13 @@ class WorldCard extends StatelessWidget {
   final int max;
 
   const WorldCard({
-    Key? key,
+    super.key,
     required this.image,
     required this.unlocked,
     required this.onTap,
     required this.min,
     required this.max,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -5,9 +5,9 @@ class StarRow extends StatelessWidget {
   final int stars;
 
   const StarRow({
-    Key? key,
+    super.key,
     required this.stars,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -46,15 +46,15 @@ class StarWidget extends StatelessWidget {
   final bool filled;
 
   const StarWidget({
-    Key? key,
+    super.key,
     required this.filled,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return SvgPicture.asset(
-      "assets/images/" + (filled ? "" : "un") + "filled_star_big.svg",
+      "assets/images/${filled ? "" : "un"}filled_star_big.svg",
       width: size.height * 0.3,
       height: size.height * 0.3,
     );

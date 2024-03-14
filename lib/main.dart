@@ -10,7 +10,6 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
-      child: const MyApp(),
       supportedLocales: const [
         Locale("en"),
         Locale("uz"),
@@ -24,12 +23,13 @@ void main() async {
         Locale("ar")
       ],
       path: "assets/translation",
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
